@@ -25,6 +25,13 @@
 
             <h1 class="text-gray-900 dark:text-white py-4" style="margin:0;">Laravel Todo App</h1>
 
+            <form method="post" action="{{ route('saveItem') }}" accept-charset="utf-8">
+              @csrf
+              <label class="text-gray-900 dark:text-white" for="listItem">New TodoList Item</label><br />
+              <input type="text" name="listItem" /><br />
+              <button type="submit">Save</button><br />
+            </form>
+
         </div>
     </body>
 </html>
