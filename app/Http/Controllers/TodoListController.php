@@ -7,7 +7,12 @@ use App\Models\ListItem;
 
 class TodoListController extends Controller
 {
-    //
+    /**
+     * Save an item passed via request to the save_items table in the database.
+     *
+     * @param  Request $request The form request
+     * @return string|null
+     */
     public function saveItem(Request $request) {
 
       // check if list item has been filled out in form
