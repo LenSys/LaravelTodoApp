@@ -33,11 +33,11 @@
             </form>
 
             <h2 class="text-gray-900 dark:text-white py-4" >Todo Items</h2>
-            <p class="text-gray-900 dark:text-white py-4">
-              <?php
-              echo var_export($listItems);
-              ?>
-            </p>
+            <ul class="text-gray-900 dark:text-white py-4">
+            @foreach ($listItems as $listItem)
+              <li>{{ $listItem->name }}</li>
+            @endforeach
+            </ul>
 
         </div>
     </body>
