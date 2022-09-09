@@ -32,6 +32,13 @@
               <button type="submit">Save</button><br />
             </form>
 
+            <h2 class="text-gray-900 dark:text-white py-4" >Todo Items</h2>
+            <p class="text-gray-900 dark:text-white py-4">
+              <?php
+              echo var_export($listItems);
+              ?>
+            </p>
+
         </div>
     </body>
 </html>
