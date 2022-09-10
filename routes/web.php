@@ -19,3 +19,7 @@ Route::get('/', [TodoListController::class, 'index'])->name('root');
 Route::post('/markItemAsComplete/{id}', [TodoListController::class, 'markItemAsComplete'])->where('id', '[0-9]+')->name('markItemAsComplete');
 
 Route::post('/saveItem', [TodoListController::class, 'saveItem'])->name('saveItem');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
