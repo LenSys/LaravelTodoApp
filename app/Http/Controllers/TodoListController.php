@@ -23,6 +23,28 @@ class TodoListController extends Controller
 
 
     /**
+     * Marks an list item as complete
+     *
+     * @param  int    $id The list item id.
+     * @return string|null
+     */
+    public function markItemAsComplete($id) {
+
+
+      if($id > 0) {
+        // use the list item id to mark as complete
+        $listItem = ListItem::find($id);
+        if($listItem) {
+          $listItem->is_complete = 1;
+          $listItem->save();
+        }
+      }
+
+      return redirect()->route('root')->with('success', 'Item successfully completed!');
+    }
+
+
+    /**
      * Save an item passed via request to the save_items table in the database.
      *
      * @param  Request $request The form request
