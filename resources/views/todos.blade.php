@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">{{ __('Welcome') }}</div>
+        <div class="card-header">{{ __('Todos') }}</div>
 
         <div class="card-body text-center">
           <form method="post" action="{{ route('saveItem') }}" accept-charset="utf-8">

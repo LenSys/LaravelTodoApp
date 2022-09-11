@@ -11,14 +11,14 @@ class TodoListController extends Controller
     /**
      * Handle the default route "/".
      *
-     * @return \Illuminate\View\View The welcome view.
+     * @return \Illuminate\View\View The todo list view.
      */
     public function index() {
       // get all list items from database table list_items
       $listItems = ListItem::all();
 
       // pass the list items to the view and return the rendered view
-      return view('welcome', ['listItems' => $listItems]);
+      return view('todos', ['listItems' => $listItems]);
     }
 
 
