@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\ListItem;
+use Illuminate\Http\Request;
 
 class TodoListController extends Controller
 {
@@ -23,8 +24,15 @@ class TodoListController extends Controller
      * @return \Illuminate\View\View The todo list view.
      */
     public function index() {
-      // get all list items from database table list_items
-      $listItems = ListItem::all();
+      // get the current user id
+      $userId = auth()->user()->id;
+      $user = User::find($userId);
+      $listItems = [];
+      
+      if($user) {
+        // get all list items of the current user from database table list_items
+        $listItems = $user->listItems;
+      }
 
       // pass the list items to the view and return the rendered view
       return view('todos', ['listItems' => $listItems]);
@@ -61,12 +69,16 @@ class TodoListController extends Controller
      */
     public function saveItem(Request $request) {
 
+      // get the current user id
+      $userId = auth()->user()->id;
+
       // check if list item has been filled out in form
       if($request->listItem !== null) {
         // save new list item in database table
         $listItem = new ListItem();
         $listItem->name = $request->listItem;
         $listItem->is_complete = 0;
+        $listItem->user_id = $userId;
         $listItem->save();
       }
 
